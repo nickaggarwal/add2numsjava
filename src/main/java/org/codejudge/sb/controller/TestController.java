@@ -2,16 +2,32 @@ package org.codejudge.sb.controller;
 
 import java.io.IOException;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.codejudge.sb.dto.InputDTO;
+import org.codejudge.sb.dto.OutputDTO;
+import org.codejudge.sb.service.IOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class TestController {
+
+	@Autowired
+	IOperation operation;
 	
 	@GetMapping("/")
 	@ResponseBody 
 	public String test() throws IOException {
 		return "Hello Docker world!";
+	}
+
+	@PostMapping("/api/add")
+	public ResponseEntity<OutputDTO> add(
+			@RequestBody InputDTO inputDTO
+	) throws Exception{
+		OutputDTO outputDTO = new OutputDTO();
+		outputDTO.setOutput(operation.addNumber(inputDTO.getNumber1(), inputDTO.getNumber2()));
+	return new ResponseEntity<OutputDTO>(outputDTO, HttpStatus.OK);
 	}
 }
