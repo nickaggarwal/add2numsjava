@@ -27,7 +27,7 @@ public class TestController {
 			@RequestBody InputDTO inputDTO
 	) throws Exception{
 		OutputDTO outputDTO = new OutputDTO();
-		outputDTO.setOutput(operation.addNumber(inputDTO.getNumber1(), inputDTO.getNumber2()));
+		outputDTO.setSum(operation.addNumber(inputDTO.getNumber1(), inputDTO.getNumber2()));
 	return new ResponseEntity<OutputDTO>(outputDTO, HttpStatus.OK);
 	}
 }

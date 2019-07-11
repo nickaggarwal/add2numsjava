@@ -2,13 +2,13 @@ package org.codejudge.sb.dto;
 
 public class OutputDTO {
 
-    Integer output;
+    Integer sum;
 
-    public Integer getOutput() {
-        return output;
+    public Integer getSum() {
+        return sum;
     }
 
-    public void setOutput(Integer output) {
-        this.output = output;
+    public void setSum(Integer output) {
+        this.sum = output;
     }
 }
